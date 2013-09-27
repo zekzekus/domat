@@ -11,3 +11,5 @@ jquery
 underscore
 iron-router
 spin
+accounts-ui
+accounts-github
