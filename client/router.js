@@ -1,13 +1,12 @@
 Router.configure({
-  layout: 'layout',
-
-  notFoundTemplate: 'notFound',
-
-  loadingTemplate: 'loading'
-
+    layout: 'layout',
+    notFoundTemplate: 'notFound',
+    loadingTemplate: 'loading'
 });
 
 Router.map(function() {
     this.route('dashboard', {path: '/'});
-    this.route('reports');
+    this.route('reports', {
+        notFoundTemplate: 'notFound'
+    });
 });
