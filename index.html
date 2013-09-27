@@ -1,12 +1,12 @@
-<body>
+<template name="layout">
     {{> header }}
     {{> navmenu }}
     <div class="main">
         <div class="main-inner">
             <div class="container">
-                <h1>Domat is coming!</h1>
+                {{yield}}
             </div>
         </div>
     </div>
     {{> footer }}
-</body>
+</template>

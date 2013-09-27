@@ -9,3 +9,5 @@ insecure
 preserve-inputs
 jquery
 underscore
+iron-router
+spin
