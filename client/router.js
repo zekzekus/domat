@@ -11,6 +11,9 @@ Router.map(function() {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
+        },
+        onAfterRun: function() {
+            clearErrors();
         }
     });
     this.route('reports', {
@@ -18,11 +21,17 @@ Router.map(function() {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
+        },
+        onAfterRun: function() {
+            clearErrors();
         }
     });
     this.route('login', {
         renderTemplates: {
             'header_login': {to: 'header'}
+        },
+        onAfterRun: function() {
+            clearErrors();
         }
     });
 });
