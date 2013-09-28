@@ -5,8 +5,24 @@ Router.configure({
 });
 
 Router.map(function() {
-    this.route('dashboard', {path: '/'});
+    this.route('dashboard', {
+        path: '/',
+        renderTemplates: {
+            'header': {to: 'header'},
+            'navmenu': {to: 'navmenu'},
+            'footer': {to: 'footer'}
+        }
+    });
     this.route('reports', {
-        notFoundTemplate: 'notFound'
+        renderTemplates: {
+            'header': {to: 'header'},
+            'navmenu': {to: 'navmenu'},
+            'footer': {to: 'footer'}
+        }
+    });
+    this.route('login', {
+        renderTemplates: {
+            'header_login': {to: 'header'}
+        }
     });
 });

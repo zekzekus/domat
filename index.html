@@ -1,6 +1,6 @@
 <template name="layout">
-    {{> header }}
-    {{> navmenu }}
+    {{yield 'header' }}
+    {{yield 'navmenu' }}
     <div class="main">
         <div class="main-inner">
             <div class="container">
@@ -8,5 +8,5 @@
             </div>
         </div>
     </div>
-    {{> footer }}
+    {{yield 'footer' }}
 </template>
