@@ -12,6 +12,7 @@
                     <span style="color: white;">
                         {{#if currentUser}}
                             {{currentUser.profile.name}}
+                            <a href="#" id="a-logout" style="color: white; text-decoration: underline;">Logout</a>
                         {{else}}
                             <a style="color: white; text-decoration: underline;" href="{{pathFor 'login'}}">Not logged in</a>
                         {{/if}}
