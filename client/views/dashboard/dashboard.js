@@ -19,6 +19,9 @@ Template.dashboard.events({
             currentVal = Session.get('timer');
             if (currentVal > 0) {
                 Session.set('timer', currentVal - 1);
+            } else {
+                Meteor.clearInterval(Session.get('timerHandle'));
+                return;
             }
         }, 1000);
         Session.set('timerHandle', timerHandle);
