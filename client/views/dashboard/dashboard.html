@@ -1,7 +1,24 @@
-<template name="dashboard">
+    <template name="dashboard">
     <h1>Dashboard Page</h1>
     <br>
-    <div class="span8">
-        {{> tasksTable}} 
+    <div class="row">
+        <div class="span8">
+            {{> tasksTable}} 
+        </div>
+        <div class="span3">
+            <div class="widget">
+                <div class="widget-header"> <i class="icon-bookmark"></i>
+                    <h3>Primitive Timer</h3>
+                </div>
+                <div class="widget-content">
+                    <div class="timer" style="text-align: center;">
+                        <h1>{{ timerValue }}</h1>
+                        <button id="btn-start" class="btn btn-primary">Start</button>
+                        <button id="btn-reset" class="btn btn-danger">Reset</button>
+                    </div>  
+                </div>
+            </div>    
+        </div>
+
     </div>
 </template>
