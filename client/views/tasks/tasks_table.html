@@ -27,8 +27,8 @@
 </template>
 
 <template name="taskItem">
-    <tr>
-        <td>{{description}}</td>
+    <tr style="{{#if completed}}text-decoration: line-through;{{/if}}">
+        <td style="{{#if completed}}color: red;{{/if}}">{{description}}</td>
         <td>{{assignee}}</td>
         <td>{{completed_pomodoros}}</td>
         <td>{{completed}}</td>
