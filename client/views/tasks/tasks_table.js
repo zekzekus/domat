@@ -4,6 +4,21 @@ Template.tasksTable.helpers({
     }
 });
 
+Template.tasksTable.events({
+    'keyup #inp-new-task': function(e) {
+        if (e.which === 13) {
+            var taskDescription = e.target.value;
+            Tasks.insert({
+                description: taskDescription,
+                assignee: Meteor.user().services.google.email,
+                completed_pomodoros: 0,
+                completed: false
+            });
+            e.target.value = "";
+        }
+    }
+});
+
 Template.taskItem.events({
     'click #btn-complete': function(e) {
         e.preventDefault();
