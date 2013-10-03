@@ -14,10 +14,11 @@ Template.dashboard.helpers({
     }
 });
 
-var seconds = 1 * 60;
+var seconds = 25 * 60;
 Meteor.startup(function() {
     Session.set('seconds', seconds);
     Session.set('timer', secondsToTime(seconds));
+    Session.set('timerHandle', undefined);
 });
 
 
@@ -26,18 +27,22 @@ Template.dashboard.events({
         Session.set('seconds', seconds);
         Session.set('timer', secondsToTime(seconds));
         Meteor.clearInterval(Session.get('timerHandle'));
+        Session.set('timerHandle', undefined);
     },
     'click #btn-start': function(e) {
-        var timerHandle = Meteor.setInterval(function() {
-            currentVal = Session.get('seconds');
-            if (currentVal >= 0) {
-                Session.set('seconds', currentVal - 1);
-                Session.set('timer', secondsToTime(currentVal));
-            } else {
-                Meteor.clearInterval(Session.get('timerHandle'));
-                return;
-            }
-        }, 100);
-        Session.set('timerHandle', timerHandle);
+        if (Session.get('timerHandle') === undefined) {
+            var timerHandle = Meteor.setInterval(function() {
+                currentVal = Session.get('seconds');
+                if (currentVal >= 0) {
+                    Session.set('seconds', currentVal - 1);
+                    Session.set('timer', secondsToTime(currentVal));
+                } else {
+                    Meteor.clearInterval(Session.get('timerHandle'));
+                    Session.set('timerHandle', undefined);
+                    return;
+                }
+            }, 1000);
+            Session.set('timerHandle', timerHandle);
+        }
     }
 });
