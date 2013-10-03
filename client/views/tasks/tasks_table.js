@@ -1,6 +1,6 @@
 Template.tasksTable.helpers({
     tasks: function() {
-        return Tasks.find();
+        return Tasks.find({}, {sort: {timestamp: -1}});
     }
 });
 
@@ -12,7 +12,8 @@ Template.tasksTable.events({
                 description: taskDescription,
                 assignee: Meteor.user().services.google.email,
                 completed_pomodoros: 0,
-                completed: false
+                completed: false,
+                timestamp: (new Date()).getTime()
             });
             e.target.value = "";
         }
