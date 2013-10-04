@@ -8,7 +8,7 @@ Template.tasksTable.events({
     'keyup #inp-new-task': function(e) {
         if (e.which === 13) {
             var taskDescription = e.target.value;
-            if (Meteor.user() === null || Meteor.user() === undefined) {
+            if (!Meteor.user()) {
                 throwError('Please login to create task!');
             } else {
                 Tasks.insert({
@@ -26,9 +26,7 @@ Template.tasksTable.events({
 
 Template.taskItem.events({
     'click #btn-complete': function(e) {
-        e.preventDefault();
         Tasks.update(this._id, {$set: {completed: !this.completed}});
-        return false;
     },
     'click #btn-delete': function(e) {
         Tasks.remove(this._id);
