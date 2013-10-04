@@ -30,5 +30,19 @@ Template.taskItem.events({
     },
     'click #btn-delete': function(e) {
         Tasks.remove(this._id);
+    },
+    'dblclick .task-description': function(e) {
+        Session.set('editing', true);
+    },
+    'keyup .txt-edit-task': function(e) {
+        if (e.which === 13) {
+            Session.set('editing', false);
+        }
+    }
+});
+
+Template.taskItem.helpers({
+    editing: function() {
+        return Session.get('editing');
     }
 });

@@ -16,7 +16,6 @@
                         <th>Description</th>
                         <th>Assignee</th>
                         <th>Completed Pomodoros</th>
-                        <th>Done?</th>
                         <th class="td-actions">Done / Delete</th>
                     </tr>
                 </thead>
@@ -32,11 +31,16 @@
 </template>
 
 <template name="taskItem">
-    <tr style="{{#if completed}}text-decoration: line-through;{{/if}}">
-        <td style="{{#if completed}}color: red;{{/if}}">{{description}}</td>
+    <tr>
+        <td style="{{#if completed}}color: red; text-decoration: line-through;{{/if}}">
+            {{#if editing}}
+                <input type="text" value="{{description}}" class="txt-edit-task">
+            {{else}}
+                <span class="task-description">{{description}}</span>
+            {{/if}}
+        </td>
         <td>{{assignee}}</td>
         <td>{{completed_pomodoros}}</td>
-        <td>{{completed}}</td>
         <td class="td-actions">
             <a href="javascript:;" id="btn-complete" class="btn btn-small {{#if completed}}btn-success{{/if}}">
                 <i class="btn-icon-only {{#if completed}}icon-remove{{else}}icon-ok{{/if}}"> </i>
