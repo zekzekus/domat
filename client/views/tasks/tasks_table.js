@@ -13,7 +13,7 @@ Template.tasksTable.events({
             } else {
                 Tasks.insert({
                     description: taskDescription,
-                    assignee: Meteor.user().profile.name,
+                    assignee: Meteor.user().services.google.email,
                     completed_pomodoros: 0,
                     completed: false,
                     timestamp: (new Date()).getTime()
