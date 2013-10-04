@@ -1,6 +1,6 @@
 Template.tasksTable.helpers({
     tasks: function() {
-        return Tasks.find({}, {sort: {completed: 1, timestamp: -1}});
+        return Tasks.find({}, {sort: {timestamp: -1}});
     }
 });
 
