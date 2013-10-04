@@ -8,14 +8,18 @@ Template.tasksTable.events({
     'keyup #inp-new-task': function(e) {
         if (e.which === 13) {
             var taskDescription = e.target.value;
-            Tasks.insert({
-                description: taskDescription,
-                assignee: Meteor.user().services.google.email,
-                completed_pomodoros: 0,
-                completed: false,
-                timestamp: (new Date()).getTime()
-            });
-            e.target.value = "";
+            if (Meteor.user() === null || Meteor.user() === undefined) {
+                throwError('Please login to create task!');
+            } else {
+                Tasks.insert({
+                    description: taskDescription,
+                    assignee: Meteor.user().services.google.email,
+                    completed_pomodoros: 0,
+                    completed: false,
+                    timestamp: (new Date()).getTime()
+                });
+                e.target.value = "";
+            }
         }
     }
 });
