@@ -60,10 +60,14 @@ Template.taskItem.events({
         Tasks.remove(this._id);
     },
     'dblclick .task-description': function(e, t) {
-        Session.set('editing_task', this._id);
-        Deps.flush();
-        t.find('#task-input').focus();
-        t.find('#task-input').select();
+        if (this.completed) {
+            alert('Task is completed. Not editable!');
+        } else {
+            Session.set('editing_task', this._id);
+            Deps.flush();
+            t.find('#task-input').focus();
+            t.find('#task-input').select();
+        }
     }
 });
 
