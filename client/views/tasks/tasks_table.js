@@ -26,6 +26,10 @@ var okCancelEvents = function (selector, callbacks) {
   return events;
 };
 
+Template.tasksTable.rendered = function() {
+    $('.task-description').tooltip();
+};
+
 Template.tasksTable.helpers({
     tasks: function() {
         return Tasks.find({}, {sort: {timestamp: -1}});
@@ -89,4 +93,3 @@ Template.taskItem.helpers({
         return Session.equals('editing_task', this._id);
     }
 });
-

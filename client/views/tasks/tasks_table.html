@@ -1,8 +1,8 @@
 <template name="tasksTable">
     <div class="widget widget-table action-table">
-        <input type="text" 
-               id="inp-new-task" 
-               name="new-task" 
+        <input type="text"
+               id="inp-new-task"
+               name="new-task"
                placeholder="Add new task..."
                style="width: 98%;">
         <div class="widget-header"> <i class="icon-th-list"></i>
@@ -36,7 +36,12 @@
             {{#if editing}}
                 <input id="task-input" type="text" value="{{description}}" class="txt-edit-task">
             {{else}}
-                <span class="task-description">{{description}}</span>
+                <span class="task-description"
+                      data-toggle="tooltip"
+                      data-placement="left"
+                      data-original-title="Double click to edit">
+                    {{description}}
+                </span>
             {{/if}}
         </td>
         <td>{{assignee}}</td>
