@@ -13,7 +13,7 @@ Router.map(function() {
             'footer': {to: 'footer'}
         },
         onAfterRun: function() {
-            clearErrors();
+            clearNotifications();
         }
     });
     this.route('reports', {
@@ -23,7 +23,7 @@ Router.map(function() {
             'footer': {to: 'footer'}
         },
         onAfterRun: function() {
-            clearErrors();
+            clearNotifications();
         }
     });
     this.route('login', {
@@ -31,7 +31,7 @@ Router.map(function() {
             'header_login': {to: 'header'}
         },
         onAfterRun: function() {
-            clearErrors();
+            clearNotifications();
         }
     });
 });
