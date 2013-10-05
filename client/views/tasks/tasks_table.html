@@ -34,7 +34,7 @@
     <tr>
         <td style="{{#if completed}}color: red; text-decoration: line-through;{{/if}}">
             {{#if editing}}
-                <input type="text" value="{{description}}" class="txt-edit-task">
+                <input id="task-input" type="text" value="{{description}}" class="txt-edit-task">
             {{else}}
                 <span class="task-description">{{description}}</span>
             {{/if}}
