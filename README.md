@@ -29,6 +29,11 @@ TODO
   going on, finished.
 * Reporting tools of pomodoro system. Task inventory, daily list etc.
 
+TODO (Utopics)
+--------------
+* Implement a plugin system to provide integration between popular task/issue
+  management systems like redmine, bugzilla, jira etc.
+
 Want to try?
 ------------
 There is nothing much to see right now but if you insist to see the prograss you can try it [here](http://domat.meteor.com/).
