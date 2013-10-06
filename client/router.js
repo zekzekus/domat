@@ -34,4 +34,14 @@ Router.map(function() {
             clearNotifications();
         }
     });
+    this.route('profile', {
+        renderTemplates: {
+            'header': {to: 'header'},
+            'navmenu': {to: 'navmenu'},
+            'footer': {to: 'footer'}
+        },
+        onAfterRun: function() {
+            clearNotifications();
+        }
+    });
 });
