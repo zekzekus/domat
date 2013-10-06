@@ -6,10 +6,16 @@ Tasks.allow({
         return !! userId;
     },
     remove: function(userId, doc) {
-        return !! userId;
+        if (Meteor.user().services.google.email === doc.assignee) {
+            return true;
+        }
+        return false;
     },
-    update: function(userId, doc) {
-        return !! userId;
+    update: function(userId, doc, fields, modifiers) {
+        if (Meteor.user().services.google.email === doc.assignee) {
+            return true;
+        }
+        return false;
     }
 });
 
