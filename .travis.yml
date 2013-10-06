@@ -2,8 +2,6 @@ language: node_js
 node_js:
   - "0.10"
 before_install:
-  - "meteor deploy domat.meteor.com"
+  - "curl -L https://raw.github.com/zekzekus/domat/master/travis.sh | /bin/sh"
 services:
   - mongodb
-env:
-  - LAIKA_OPTIONS="-t 5000"
