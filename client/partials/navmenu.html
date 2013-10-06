@@ -3,8 +3,16 @@
         <div class="subnavbar-inner">
             <div class="container">
                 <ul class="mainnav">
-                    <li class="active"><a href="{{pathFor 'dashboard'}}"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-                    <li><a href="{{pathFor 'reports'}}"><i class="icon-list-alt"></i><span>Reports</span> </a> </li>
+                    <li {{#if ifCurrentPath '/'}}class="active"{{/if}}>
+                        <a href="{{pathFor 'dashboard'}}">
+                            <i class="icon-dashboard"></i><span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li {{#if ifCurrentPath '/reports'}}class="active"{{/if}}>
+                        <a href="{{pathFor 'reports'}}">
+                            <i class="icon-list-alt"></i><span>Reports</span>
+                        </a>
+                    </li>
                     <li><a href="javascript:;"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
                     <li><a href="javascript:;"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
                     <li><a href="javascript:;"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
