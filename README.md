@@ -18,6 +18,8 @@ Status
   concept
 * Timer developed a little bit with visual enchancements. Bigger, nicer, eye
   catching etc.
+* Security improved with server side Meteor.Methods.
+* Notification system improved with auto-dismiss.
 
 TODO
 ----
