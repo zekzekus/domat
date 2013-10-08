@@ -1,6 +1,7 @@
 Meteor.publish('tasks', function() {
     return Tasks.find();
 });
+
 Tasks.allow({
     insert: function(userId, doc) {
         return !! userId;

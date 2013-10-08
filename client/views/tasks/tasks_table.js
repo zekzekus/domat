@@ -39,19 +39,17 @@ Template.tasksTable.helpers({
 Template.tasksTable.events({
     'keyup #inp-new-task': function(e) {
         if (e.which === 13) {
-            var taskDescription = e.target.value;
-            if (!Meteor.user()) {
-                throwError('Please login to create task!');
-            } else {
-                Tasks.insert({
-                    description: taskDescription,
-                    assignee: Meteor.user().services.google.email,
-                    completed_pomodoros: 0,
-                    completed: false,
-                    timestamp: (new Date()).getTime()
-                });
-                e.target.value = "";
-            }
+            var task = {
+                description: e.target.value
+            };
+            Meteor.call('addTask', task, function(error, id) {
+                if (error) {
+                    throwError(error.reason);
+                } else {
+                    throwInfo('Task added with id: ' + id);
+                    e.target.value = "";
+                }
+            });
         }
     }
 });
