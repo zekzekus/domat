@@ -2,6 +2,9 @@ Notifications = new Meteor.Collection(null);
 
 throwNotify = function(message, type) {
     Notifications.insert({message: message, type: type, seen: false});
+    Meteor.setTimeout(function() {
+        $('.alert-' + type).alert('close');
+    }, 5000);
 };
 
 throwError = function(message) {
@@ -14,6 +17,10 @@ throwWarning = function(message) {
 
 throwInfo = function(message) {
     throwNotify(message, 'info');
+};
+
+throwSuccess = function(message) {
+    throwNotify(message, 'success');
 };
 
 clearNotifications = function() {
