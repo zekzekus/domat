@@ -12,12 +12,36 @@
                 </div>
                 <div class="widget-content">
                     <div class="timer" style="text-align: center;">
-                        <h1>{{ timerValue }}</h1>
-                        <button id="btn-start" class="btn btn-primary">Start</button>
-                        <button id="btn-reset" class="btn btn-danger">Reset</button>
+                        <a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Start</a>
                     </div>  
                 </div>
             </div>    
         </div>
     </div>
+    {{> timerModal }}
+</template>
+
+<template name="timerModal">
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Now it's time to focus!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Task description will be here...</p>
+            {{> timerContent }}
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+    </div>
+</template>
+
+<template name="timerContent">
+    <div class="timer" style="text-align: center;">
+        <h1 style="font-size: 70px; line-height: 105px; font-weight: bold;">{{ timerValue }}</h1>
+        <button id="btn-start" class="btn btn-primary">Start</button>
+        <button id="btn-reset" class="btn btn-danger">Reset</button>
+    </div>  
 </template>

@@ -8,7 +8,7 @@ var secondsToTime = function(sec) {
     return remainingMinutes.toString() + ':' + digit + String(remainingSeconds);
 };
 
-Template.dashboard.helpers({
+Template.timerContent.helpers({
     timerValue: function() {
         return Session.get('timer');
     }
