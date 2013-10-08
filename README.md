@@ -16,6 +16,8 @@ Status
   complete)
 * A simple and task independant countdown timer implemented as a proof of
   concept
+* Timer developed a little bit with visual enchancements. Bigger, nicer, eye
+  catching etc.
 
 TODO
 ----
