@@ -12,7 +12,11 @@
                 </div>
                 <div class="widget-content">
                     <div class="timer" style="text-align: center;">
-                        <a href="#myModal" role="button" id="btn-start" class="btn btn-primary" data-toggle="modal">Start</a>
+                        <a href="#myModal" role="button" id="btn-start" class="btn btn-primary" data-toggle="modal">
+                            {{#isolate}}
+                                {{ timerValue }}
+                            {{/isolate}}
+                        </a>
                     </div>  
                 </div>
             </div>    

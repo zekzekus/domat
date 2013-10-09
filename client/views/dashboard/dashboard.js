@@ -12,6 +12,12 @@ Template.timerContent.helpers({
     }
 });
 
+Template.dashboard.helpers({
+    timerValue: function() {
+        return Session.get('timer');
+    }
+});
+
 var seconds = 25 * 60;
 Meteor.startup(function() {
     Session.set('seconds', seconds);
