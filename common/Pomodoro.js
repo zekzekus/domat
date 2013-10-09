@@ -78,5 +78,6 @@ Pomodoro.prototype.updateState = function() {
 
 Pomodoro.prototype.reset = function() {
     env.clearInterval(this.intervalHandle);
+    this.intervalHandle = undefined;
     this.__setDefaults();
 };
