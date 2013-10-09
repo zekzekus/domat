@@ -3,9 +3,9 @@ var env = Meteor;
 Pomodoro = function(options) {
     this.options = options || {};
 
-    this.workDuration = this.options.workDuration || 25;
-    this.shortBreakDuration = this.options.shortBreakDuration || 5;
-    this.longBreakDuration = this.options.longBreakDuration || 15;
+    this.workDuration = this.options.workDuration || 25 * 60;
+    this.shortBreakDuration = this.options.shortBreakDuration || 5 * 60;
+    this.longBreakDuration = this.options.longBreakDuration || 15 * 60;
     this.callback = this.options.callback;
     this.__setDefaults();
 };
@@ -33,7 +33,7 @@ Pomodoro.prototype.getOptions = function() {
 
 Pomodoro.prototype.start = function() {
     var that = this;
-    this.intervalHandle = env.setInterval(function() { that.__start(); }, 100);
+    this.intervalHandle = env.setInterval(function() { that.__start(); }, 1000);
 };
 
 Pomodoro.prototype.__start = function() {

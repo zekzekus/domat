@@ -21,9 +21,6 @@ Template.dashboard.events({
     'click #btn-start': function(e) {
         if (pomodoro === undefined) {
             pomodoro = new Pomodoro({
-                workDuration: 25,
-                shortBreakDuration: 5,
-                longBreakDuration: 15,
                 callback: function(prettyTime) {
                     Session.set('timer', prettyTime);
                 }
