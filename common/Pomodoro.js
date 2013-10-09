@@ -6,6 +6,10 @@ Pomodoro = function(options) {
     this.workDuration = this.options.workDuration || 25;
     this.shortBreakDuration = this.options.shortBreakDuration || 5;
     this.longBreakDuration = this.options.longBreakDuration || 15;
+    this.__setDefaults();
+};
+
+Pomodoro.prototype.__setDefaults = function() {
     this.pomocount = 0;
     this.state = undefined;
     this.intervalHandle = undefined;
@@ -59,4 +63,9 @@ Pomodoro.prototype.updateState = function() {
         this.time = this.workDuration;
     }
     return;
+};
+
+Pomodoro.prototype.reset = function() {
+    env.clearInterval(this.intervalHandle);
+    this.__setDefaults();
 };
