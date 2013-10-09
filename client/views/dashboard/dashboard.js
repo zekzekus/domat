@@ -1,10 +1,4 @@
-var secondsToTime = function(sec) {
-    var remainingMinutes = Math.floor(sec / 60);
-    var remainingSeconds = sec - remainingMinutes * 60;
-    remainingMinutes = remainingMinutes < 10 ? "0" + remainingMinutes : remainingMinutes;
-    remainingSeconds = remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds;
-    return remainingMinutes + ':' + remainingSeconds;
-};
+var pomodoro = undefined;
 
 Template.timerContent.helpers({
     timerValue: function() {
@@ -18,35 +12,23 @@ Template.dashboard.helpers({
     }
 });
 
-var seconds = 25 * 60;
-Meteor.startup(function() {
-    Session.set('seconds', seconds);
-    Session.set('timer', secondsToTime(seconds));
-    Session.set('timerHandle', undefined);
-});
-
-
 Template.dashboard.events({
     'click #btn-reset': function(e) {
-        Session.set('seconds', seconds);
-        Session.set('timer', secondsToTime(seconds));
-        Meteor.clearInterval(Session.get('timerHandle'));
-        Session.set('timerHandle', undefined);
+        if (pomodoro !== undefined) {
+            pomodoro.reset();
+        }
     },
     'click #btn-start': function(e) {
-        if (Session.get('timerHandle') === undefined) {
-            var timerHandle = Meteor.setInterval(function() {
-                currentVal = Session.get('seconds');
-                if (currentVal >= 0) {
-                    Session.set('seconds', currentVal - 1);
-                    Session.set('timer', secondsToTime(currentVal));
-                } else {
-                    Meteor.clearInterval(Session.get('timerHandle'));
-                    Session.set('timerHandle', undefined);
-                    return;
+        if (pomodoro === undefined) {
+            pomodoro = new Pomodoro({
+                workDuration: 25,
+                shortBreakDuration: 5,
+                longBreakDuration: 15,
+                callback: function(prettyTime) {
+                    Session.set('timer', prettyTime);
                 }
-            }, 1000);
-            Session.set('timerHandle', timerHandle);
+            });
         }
+        pomodoro.start();
     }
 });
