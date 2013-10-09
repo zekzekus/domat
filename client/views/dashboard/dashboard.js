@@ -1,11 +1,9 @@
 var secondsToTime = function(sec) {
     var remainingMinutes = Math.floor(sec / 60);
     var remainingSeconds = sec - remainingMinutes * 60;
-    var digit = "";
-    if (remainingSeconds < 10) {
-        digit = "0";
-    }
-    return remainingMinutes.toString() + ':' + digit + String(remainingSeconds);
+    remainingMinutes = remainingMinutes < 10 ? "0" + remainingMinutes : remainingMinutes;
+    remainingSeconds = remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds;
+    return remainingMinutes + ':' + remainingSeconds;
 };
 
 Template.timerContent.helpers({
