@@ -33,7 +33,9 @@ Pomodoro.prototype.getOptions = function() {
 
 Pomodoro.prototype.start = function() {
     var that = this;
-    this.intervalHandle = env.setInterval(function() { that.__start(); }, 1000);
+    if (this.intervalHandle === undefined) {
+        this.intervalHandle = env.setInterval(function() { that.__start(); }, 1000);
+    }
 };
 
 Pomodoro.prototype.__start = function() {
@@ -41,6 +43,7 @@ Pomodoro.prototype.__start = function() {
 
     if (this.getTime() === 0) {
         env.clearInterval(this.intervalHandle);
+        this.intervalHandle = undefined;
         this.updateState();
         return;
     }
