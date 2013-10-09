@@ -18,7 +18,7 @@ Template.dashboard.events({
             pomodoro.reset();
         }
     },
-    'click #btn-start': function(e) {
+    'click .btn-start': function(e) {
         if (pomodoro === undefined) {
             pomodoro = new Pomodoro({
                 callback: function(prettyTime) {
