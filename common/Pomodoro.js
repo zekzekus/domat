@@ -8,7 +8,7 @@ Pomodoro = function(options) {
     this.longBreakDuration = this.options.longBreakDuration || 15;
     this.pomocount = 0;
     this.state = undefined;
-    this.timeoutHandle = undefined;
+    this.intervalHandle = undefined;
     this.time = this.workDuration;
     this.updateState();
 };
@@ -19,17 +19,19 @@ Pomodoro.prototype.getOptions = function() {
 
 Pomodoro.prototype.start = function() {
     var that = this;
+    this.intervalHandle = env.setInterval(function() { that.__start(); }, 1000);
+};
 
+Pomodoro.prototype.__start = function() {
     console.log(this.time + ' - ' + this.state + ' - ' + this.pomocount);
 
     this.time -= 1;
 
     if (this.time === 0) {
-        env.clearTimeout(this.timeoutHandle);
+        env.clearInterval(this.intervalHandle);
         this.updateState();
         return;
     }
-    this.timeoutHandle = env.setTimeout(function() { that.start(); }, 1000);
 };
 
 Pomodoro.prototype.getPrettyTime = function() {
