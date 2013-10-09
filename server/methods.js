@@ -12,7 +12,9 @@ Meteor.methods({
 
         var task = _.extend(_.pick(taskAttributes, 'description'), {
             assignee: user.services.google.email,
-            timestamp: new Date().getTime()
+            timestamp: new Date().getTime(),
+            completed_pomodoros: 0,
+            completed: false
         });
 
         var taskId = Tasks.insert(task);
