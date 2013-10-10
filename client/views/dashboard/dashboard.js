@@ -18,7 +18,7 @@ Template.dashboard.events({
             pomodoro.reset();
         }
     },
-    'click .btn-start': function(e) {
+    'click #btn-start': function(e) {
         pomodoro.start();
     },
     'click #btn-pomodoro': function(e) {
