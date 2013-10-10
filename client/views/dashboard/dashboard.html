@@ -12,8 +12,8 @@
                 </div>
                 <div class="widget-content">
                     <div class="timer" style="text-align: center;">
-                        <a href="#myModal" role="button" id="btn-start" class="btn btn-primary btn-start" data-toggle="modal">
-                            Let's pomodoro!
+                        <a href="#myModal" role="button" class="btn btn-primary btn-large" data-toggle="modal">
+                            Let's get something done!
                         </a>
                     </div>  
                 </div>
@@ -43,6 +43,7 @@
 <template name="timerContent">
     <div class="timer" style="text-align: center;">
         <h1 style="font-size: 70px; line-height: 105px; font-weight: bold;">{{ timerValue }}</h1>
+        <button id="btn-start" class="btn btn-primary btn-start">Start</button>
         <button id="btn-reset" class="btn btn-danger">Reset</button>
     </div>  
 </template>
