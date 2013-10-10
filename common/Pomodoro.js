@@ -6,7 +6,7 @@ Pomodoro = function(options) {
     this.workDuration = this.options.workDuration || 25 * 60;
     this.shortBreakDuration = this.options.shortBreakDuration || 5 * 60;
     this.longBreakDuration = this.options.longBreakDuration || 15 * 60;
-    this.callback = this.options.callback;
+    this.callback = this.options.callback || function() {};
     this.__setDefaults();
 };
 
