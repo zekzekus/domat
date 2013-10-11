@@ -20,11 +20,27 @@ Pomodoro.prototype.__setDefaults = function() {
 
 Pomodoro.prototype.setTime = function(value) {
     this.time = value;
-    this.callback(this.getPrettyTime());
+    this.callback({
+        prettyTime: this.getPrettyTime(),
+        prettyPercent: this.getPercent()
+    });
 };
 
 Pomodoro.prototype.getTime = function() {
     return this.time;
+};
+
+Pomodoro.prototype.getPercent = function() {
+    var duration;
+    if (this.state === 'work') {
+        duration = this.workDuration;
+    } else if (this.state === 'short break') {
+        duration = this.shortBreakDuration;
+    } else if (this.state === 'long break') {
+        duration = this.longBreakDuration;
+    }
+
+    return Math.floor(100 - (100 * this.time / duration));
 };
 
 Pomodoro.prototype.getOptions = function() {
@@ -34,7 +50,7 @@ Pomodoro.prototype.getOptions = function() {
 Pomodoro.prototype.start = function() {
     var that = this;
     if (this.intervalHandle === undefined) {
-        this.intervalHandle = env.setInterval(function() { that.__start(); }, 1000);
+        this.intervalHandle = env.setInterval(function() { that.__start(); }, 100);
     }
 };
 

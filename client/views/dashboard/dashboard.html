@@ -43,6 +43,9 @@
 <template name="timerContent">
     <div class="timer" style="text-align: center;">
         <h1 style="font-size: 70px; line-height: 105px; font-weight: bold;">{{ timerValue }}</h1>
+        <div class="progress progress-striped active">
+            <div class="bar" style="width: {{ timerPercent }}%;"></div>
+        </div>
         <button id="btn-start" class="btn btn-primary btn-start">Start</button>
         <button id="btn-reset" class="btn btn-danger">Reset</button>
     </div>  
