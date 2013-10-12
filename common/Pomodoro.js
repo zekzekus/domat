@@ -50,7 +50,9 @@ Pomodoro.prototype.getOptions = function() {
 Pomodoro.prototype.start = function() {
     var that = this;
     if (this.intervalHandle === undefined) {
-        this.intervalHandle = env.setInterval(function() { that.__start(); }, 100);
+        this.intervalHandle = env.setInterval(function() {
+            that.__start();
+        }, 100);
     }
 };
 
@@ -94,6 +96,10 @@ Pomodoro.prototype.updateState = function() {
 Pomodoro.prototype.reset = function() {
     this.__clearInterval();
     this.__setDefaults();
+};
+
+Pomodoro.prototype.stop = function() {
+    this.__clearInterval();
 };
 
 Pomodoro.prototype.__clearInterval = function() {

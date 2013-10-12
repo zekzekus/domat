@@ -38,5 +38,10 @@ Template.dashboard.events({
                 }
             });
         }
+    },
+    'click #btn-stop': function(e) {
+        if (pomodoro !== undefined) {
+            pomodoro.stop();
+        }
     }
 });
