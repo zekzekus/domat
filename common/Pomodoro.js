@@ -22,12 +22,25 @@ Pomodoro.prototype.setTime = function(value) {
     this.time = value;
     this.callback({
         prettyTime: this.getPrettyTime(),
-        prettyPercent: this.getPercent()
+        prettyPercent: this.getPercent(),
+        prettyState: this.getPrettyState()
     });
 };
 
 Pomodoro.prototype.getTime = function() {
     return this.time;
+};
+
+Pomodoro.prototype.getPrettyState = function() {
+    if (this.state === 'work') {
+        return 'Working!';
+    }
+    if (this.state === 'short break') {
+        return 'Short Break';
+    }
+    if (this.state === 'long break') {
+        return 'Long Break';
+    }
 };
 
 Pomodoro.prototype.getPercent = function() {

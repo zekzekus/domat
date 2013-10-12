@@ -12,6 +12,12 @@ Template.timerContent.helpers({
     }
 });
 
+Template.timerModal.helpers({
+    timerState: function() {
+        return Session.get('state');
+    }
+});
+
 Template.dashboard.helpers({
     timerValue: function() {
         return Session.get('timer');
@@ -35,6 +41,7 @@ Template.dashboard.events({
                 callback: function(timerInfo) {
                     Session.set('timer', timerInfo.prettyTime);
                     Session.set('percent', timerInfo.prettyPercent);
+                    Session.set('state', timerInfo.prettyState);
                 }
             });
         }

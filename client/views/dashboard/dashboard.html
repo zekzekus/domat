@@ -3,7 +3,7 @@
     <br>
     <div class="row-fluid">
         <div class="span8">
-            {{> tasksTable}} 
+            {{> tasksTable}}
         </div>
         <div class="span3">
             <div class="widget">
@@ -15,9 +15,9 @@
                         <a href="#myModal" role="button" id="btn-pomodoro" class="btn btn-primary btn-large" data-toggle="modal">
                             Let's get something done!
                         </a>
-                    </div>  
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
     {{> timerModal }}
@@ -28,7 +28,7 @@
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Now it's time to focus!</h3>
+            <h3 id="myModalLabel">{{#isolate}}{{ timerState }}{{/isolate}}</h3>
         </div>
         <div class="modal-body">
             <p>Task description will be here...</p>
@@ -49,5 +49,5 @@
         <button id="btn-start" class="btn btn-primary btn-start">Start</button>
         <button id="btn-stop" class="btn btn-warning">Stop</button>
         <button id="btn-reset" class="btn btn-danger">Reset</button>
-    </div>  
+    </div>
 </template>
