@@ -7,6 +7,12 @@ Pomodoro = function(options) {
     this.shortBreakDuration = this.options.shortBreakDuration || 5 * 60;
     this.longBreakDuration = this.options.longBreakDuration || 15 * 60;
     this.callback = this.options.callback || function() {};
+    this.onWorkStart = this.options.onWorkStart || function() {};
+    this.onWorkFinish = this.options.onWorkFinish || function() {};
+    this.onShortBreakStart = this.options.onShortBreakStart || function() {};
+    this.onShortBreakFinish = this.options.onShortBreakFinish || function() {};
+    this.onLongBreakStart = this.options.onLongBreakStart || function() {};
+    this.onLongBreakFinish = this.options.onLongBreakFinish || function() {};
     this.__setDefaults();
 };
 
@@ -20,11 +26,7 @@ Pomodoro.prototype.__setDefaults = function() {
 
 Pomodoro.prototype.setTime = function(value) {
     this.time = value;
-    this.callback({
-        prettyTime: this.getPrettyTime(),
-        prettyPercent: this.getPercent(),
-        prettyState: this.getPrettyState()
-    });
+    this.callback();
 };
 
 Pomodoro.prototype.getTime = function() {
@@ -66,6 +68,7 @@ Pomodoro.prototype.start = function() {
         this.intervalHandle = env.setInterval(function() {
             that.__start();
         }, 100);
+        this.__callStartCallbacks();
     }
 };
 
@@ -73,9 +76,40 @@ Pomodoro.prototype.__start = function() {
     this.setTime(this.getTime() - 1);
 
     if (this.getTime() === 0) {
+        this.__callFinishCallbacks();
         this.__clearInterval();
         this.updateState();
         return;
+    }
+};
+
+Pomodoro.prototype.__callStartCallbacks = function() {
+    switch (this.state) {
+        case 'work':
+            this.onWorkStart();
+            break;
+        case 'short break':
+            this.onShortBreakStart();
+            break;
+        case 'long break':
+            this.onLongBreakStart();
+            break;
+        default: break;
+    }
+};
+
+Pomodoro.prototype.__callFinishCallbacks = function() {
+    switch (this.state) {
+        case 'work':
+            this.onWorkFinish();
+            break;
+        case 'short break':
+            this.onShortBreakFinish();
+            break;
+        case 'long break':
+            this.onLongBreakFinish();
+            break;
+        default: break;
     }
 };
 

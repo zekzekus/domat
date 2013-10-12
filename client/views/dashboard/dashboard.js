@@ -44,10 +44,10 @@ Template.dashboard.events({
     'click #btn-pomodoro': function(e) {
         if (pomodoro === undefined) {
             pomodoro = new Pomodoro({
-                callback: function(timerInfo) {
-                    Session.set('timer', timerInfo.prettyTime);
-                    Session.set('percent', timerInfo.prettyPercent);
-                    Session.set('state', timerInfo.prettyState);
+                callback: function() {
+                    Session.set('timer', this.getPrettyTime());
+                    Session.set('percent', this.getPercent());
+                    Session.set('state', this.getPrettyState());
                 }
             });
         }
