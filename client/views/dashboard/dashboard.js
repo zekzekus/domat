@@ -15,6 +15,12 @@ Template.timerContent.helpers({
 Template.timerModal.helpers({
     timerState: function() {
         return Session.get('state');
+    },
+    linkedTask: function() {
+        var linked_id = Session.get('linked_id');
+        if (linked_id !== undefined) {
+            return Tasks.findOne({_id: linked_id}).description;
+        }
     }
 });
 

@@ -1,3 +1,5 @@
+Session.setDefault('linked_id', undefined);
+
 // Returns an event map that handles the "escape" and "return" keys and
 // "blur" events on a text input (given by selector) and interprets them
 // as "ok" or "cancel".
@@ -70,6 +72,13 @@ Template.taskItem.events({
             t.find('#task-input').focus();
             t.find('#task-input').select();
         }
+    },
+    'click #btn-link': function(e) {
+        if (Session.get('linked_id') === undefined) {
+            Session.set('linked_id', this._id);
+        } else {
+            Session.set('linked_id', undefined);
+        }
     }
 });
 
@@ -89,5 +98,8 @@ Template.taskItem.events(okCancelEvents(
 Template.taskItem.helpers({
     editing: function() {
         return Session.equals('editing_task', this._id);
+    },
+    linked: function() {
+        return Session.equals('linked_id', this._id);
     }
 });

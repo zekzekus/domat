@@ -17,6 +17,7 @@
                         <th>Assignee</th>
                         <th>Completed Pomodoros</th>
                         <th class="td-actions">Done / Delete</th>
+                        <th>Work</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +53,11 @@
             </a>
             <a href="javascript:;" id="btn-delete" class="btn btn-danger btn-small">
                 <i class="btn-icon-only icon-minus"> </i>
+            </a>
+        </td>
+        <td>
+            <a href="javascript:;" id="btn-link" class="btn {{#if linked}}btn-success{{else}}btn-primary{{/if}} btn-small">
+                <i class="btn-icon-only {{#if linked}}icon-pause{{else}}icon-play{{/if}}"> </i>
             </a>
         </td>
     </tr>
