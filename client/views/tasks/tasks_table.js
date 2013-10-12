@@ -46,7 +46,6 @@ Template.tasksTable.events({
                 if (error) {
                     throwError(error.reason);
                 } else {
-                    throwSuccess('Task added with id: ' + id);
                     e.target.value = "";
 
                 }
