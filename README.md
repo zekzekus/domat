@@ -34,7 +34,7 @@ TODO
   going on, finished.
 * Reporting tools of pomodoro system. Task inventory, daily list etc.
 
-TODO (Utopics)
+TODO (Further)
 --------------
 * Implement a plugin system to provide integration between popular task/issue
   management systems like redmine, bugzilla, jira etc.
