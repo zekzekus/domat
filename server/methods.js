@@ -14,7 +14,8 @@ Meteor.methods({
             assignee: user.services.google.email,
             timestamp: new Date().getTime(),
             completed_pomodoros: 0,
-            completed: false
+            completed: false,
+            owner: user._id
         });
 
         var taskId = Tasks.insert(task);
