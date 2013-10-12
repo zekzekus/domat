@@ -21,6 +21,12 @@ Template.timerModal.helpers({
         if (linked_id !== undefined) {
             return Tasks.findOne({_id: linked_id}).description;
         }
+    },
+    linkedAny: function() {
+        if (Session.get('linked_id') === undefined) {
+            return false;
+        }
+        return true;
     }
 });
 

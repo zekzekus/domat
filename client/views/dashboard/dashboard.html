@@ -30,8 +30,8 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">{{#isolate}}{{ timerState }}{{/isolate}}</h3>
         </div>
-        <div class="modal-body">
-            <p>{{ linkedTask }}</p>
+        <div class="modal-body" style="text-align: center;">
+            <h3>{{#if linkedAny}}{{ linkedTask }}{{else}}General Pomodoro{{/if}}</h3>
             {{> timerContent }}
         </div>
         <div class="modal-footer">
