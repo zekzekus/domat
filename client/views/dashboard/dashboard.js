@@ -2,11 +2,21 @@ pomodoro = undefined;
 
 Template.dashboard.events({
     'click #btn-pomodoro': function(e) {
+        var settings = Settings.findOne({user_id: Meteor.user()._id});
+
+        if (!settings) {
+            settings = {
+                workDuration: undefined,
+                shortBreakDuration: undefined,
+                longBreakDuration: undefined
+            };
+        }
+
         if (pomodoro === undefined) {
             pomodoro = new Pomodoro({
-                workDuration: Session.get('tmpWork'),
-                shortBreakDuration: Session.get('tmpShort'),
-                longBreakDuration: Session.get('tmpLong'),
+                workDuration: settings.workDuration, 
+                shortBreakDuration: settings.shortBreakDuration,
+                longBreakDuration: settings.longBreakDuration,
                 onCountdown: function() {
                     Session.set('timer', this.getPrettyTime());
                     Session.set('percent', this.getPercent());

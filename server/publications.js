@@ -24,3 +24,16 @@ Meteor.publish("userData", function () {
   return Meteor.users.find({_id: this.userId},
                            {fields: {'profile': 1, 'services.google.email': 1}});
 });
+
+Meteor.publish('settings', function() {
+    return Settings.find({user_id: this.userId});
+});
+
+Settings.allow({
+    insert: function(userId, doc) {
+        return userId === doc.user_id;
+    },
+    update: function(userId, doc, fields, modifiers) {
+        return userId === doc.user_id;
+    }
+});
