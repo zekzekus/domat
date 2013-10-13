@@ -34,6 +34,7 @@ var okCancelEvents = function (selector, callbacks) {
 
 Template.tasksTable.rendered = function() {
     $('.task-description').tooltip();
+    $('#btn-reload').tooltip();
 };
 
 Template.tasksTable.helpers({

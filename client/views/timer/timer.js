@@ -31,6 +31,10 @@ Template.timer.events({
         if (pomodoro !== undefined) {
             pomodoro.stop();
         }
+    },
+    'click #btn-reload': function(e) {
+        pomodoro = undefined;
+        initPomodoro();
     }
 });
 
