@@ -1,4 +1,8 @@
-Session.setDefault('linked_id', undefined);
+if (Meteor.isClient) {
+    Meteor.startup(function() {
+        Session.set('linked_id', undefined);
+    });
+}
 
 // Returns an event map that handles the "escape" and "return" keys and
 // "blur" events on a text input (given by selector) and interprets them

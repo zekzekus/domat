@@ -44,4 +44,14 @@ Router.map(function() {
             clearNotifications();
         }
     });
+    this.route('timer', {
+        renderTemplates: {
+            'header': {to: 'header'},
+            'navmenu': {to: 'navmenu'},
+            'footer': {to: 'footer'}
+        },
+        onAfterRun: function() {
+            clearNotifications();
+        }
+    });
 });
