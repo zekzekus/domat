@@ -8,28 +8,28 @@ if (Meteor.isClient) {
 // "blur" events on a text input (given by selector) and interprets them
 // as "ok" or "cancel".
 var okCancelEvents = function (selector, callbacks) {
-  var ok = callbacks.ok || function () {};
-  var cancel = callbacks.cancel || function () {};
+    var ok = callbacks.ok || function () {};
+    var cancel = callbacks.cancel || function () {};
 
-  var events = {};
-  events['keyup '+selector+', keydown '+selector+', focusout '+selector] =
-    function (evt) {
-      if (evt.type === "keydown" && evt.which === 27) {
-        // escape = cancel
-        cancel.call(this, evt);
+    var events = {};
+    events['keyup '+selector+', keydown '+selector+', focusout '+selector] =
+        function (evt) {
+        if (evt.type === "keydown" && evt.which === 27) {
+            // escape = cancel
+            cancel.call(this, evt);
 
-      } else if (evt.type === "keyup" && evt.which === 13 ||
-                 evt.type === "focusout") {
-        // blur/return/enter = ok/submit if non-empty
-        var value = String(evt.target.value || "");
-        if (value)
-          ok.call(this, value, evt);
-        else
-          cancel.call(this, evt);
-      }
+        } else if (evt.type === "keyup" && evt.which === 13 ||
+                   evt.type === "focusout") {
+            // blur/return/enter = ok/submit if non-empty
+            var value = String(evt.target.value || "");
+            if (value)
+                ok.call(this, value, evt);
+            else
+                cancel.call(this, evt);
+        }
     };
 
-  return events;
+    return events;
 };
 
 Template.tasksTable.rendered = function() {
@@ -65,7 +65,11 @@ Template.taskItem.events({
         Tasks.update(this._id, {$set: {completed: !this.completed}});
     },
     'click #btn-delete': function(e) {
-        Tasks.remove(this._id);
+        if (this.completed) {
+            throwWarning('Task is active!');
+        } else {
+            Tasks.remove(this._id);
+        }
     },
     'dblclick .task-description': function(e, t) {
         if (this.completed) {
