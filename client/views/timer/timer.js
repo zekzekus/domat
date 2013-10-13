@@ -6,7 +6,7 @@ Template.timer.rendered = function() {
             workDuration: 30,
             shortBreakDuration: 10,
             longBreakDuration: 15,
-            callback: function() {
+            onCountdown: function() {
                 Session.set('timer', this.getPrettyTime());
                 Session.set('percent', this.getPercent());
                 Session.set('state', this.getPrettyState());

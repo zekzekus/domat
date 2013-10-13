@@ -6,7 +6,7 @@ Pomodoro = function(options) {
     this.workDuration = this.options.workDuration || 25 * 60;
     this.shortBreakDuration = this.options.shortBreakDuration || 5 * 60;
     this.longBreakDuration = this.options.longBreakDuration || 15 * 60;
-    this.callback = this.options.callback || function() {};
+    this.onCountdown = this.options.onCountdown || function() {};
     this.onWorkStart = this.options.onWorkStart || function() {};
     this.onWorkFinish = this.options.onWorkFinish || function() {};
     this.onShortBreakStart = this.options.onShortBreakStart || function() {};
@@ -26,7 +26,7 @@ Pomodoro.prototype.__setDefaults = function() {
 
 Pomodoro.prototype.setTime = function(value) {
     this.time = value;
-    this.callback();
+    this.onCountdown();
 };
 
 Pomodoro.prototype.getTime = function() {
