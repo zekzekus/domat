@@ -6,6 +6,6 @@ Template.dashboard.helpers({
 
 Template.dashboard.events({
     'click #btn-pomodoro': function(e) {
-        Router.dispatch('/timer');
+        $('#myModal').modal({keyboard: false});
     }
 });

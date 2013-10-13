@@ -22,7 +22,6 @@ Template.timer.rendered = function() {
             }
         });
     }
-    $('#myModal').modal({keyboard: false});
 };
 
 Template.timer.helpers({
