@@ -80,6 +80,7 @@ Template.taskItem.events({
     'click #btn-link': function(e) {
         if (Session.get('linked_id') === undefined) {
             Session.set('linked_id', this._id);
+            Router.dispatch('/timer');
         } else {
             Session.set('linked_id', undefined);
         }
