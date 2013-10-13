@@ -31,9 +31,6 @@ Template.timer.events({
         if (pomodoro !== undefined) {
             pomodoro.stop();
         }
-    },
-    'click button[data-dismiss=modal]': function(e) {
-        Router.dispatch('/');
     }
 });
 
