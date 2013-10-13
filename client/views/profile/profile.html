@@ -1,4 +1,30 @@
 <template name="profile">
-    <h1>Profile</h1>
-    <br>
+<h1>Profile Settings</h1>
+<br>
+<p>For development purposes the durations are in seconds. For example if you want 25 minutes, you should give 1500.</p>
+<form class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label" for="workDuration">Work Duration</label>
+        <div class="controls">
+            <input type="text" id="workDuration" value="{{work}}" placeholder="">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="shortDuration">Short Break Duration</label>
+        <div class="controls">
+            <input type="text" id="shortDuration" value="{{shortB}}" placeholder="">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="longDuration">Long Break Duration</label>
+        <div class="controls">
+            <input type="text" id="longDuration" value="{{longB}}" placeholder="">
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn">Save</button>
+        </div>
+    </div>
+</form>
 </template>

@@ -3,9 +3,9 @@ var pomodoro = undefined;
 Template.timer.rendered = function() {
     if (pomodoro === undefined) {
         pomodoro = new Pomodoro({
-            workDuration: 30,
-            shortBreakDuration: 10,
-            longBreakDuration: 15,
+            workDuration: Session.get('tmpWork'),
+            shortBreakDuration: Session.get('tmpShort'),
+            longBreakDuration: Session.get('tmpLong'),
             onCountdown: function() {
                 Session.set('timer', this.getPrettyTime());
                 Session.set('percent', this.getPercent());

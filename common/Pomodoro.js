@@ -67,7 +67,7 @@ Pomodoro.prototype.start = function() {
     if (this.intervalHandle === undefined) {
         this.intervalHandle = env.setInterval(function() {
             that.__start();
-        }, 100);
+        }, 1000);
         this.__callStartCallbacks();
     }
 };

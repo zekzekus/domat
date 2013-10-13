@@ -78,11 +78,15 @@ Template.taskItem.events({
         }
     },
     'click #btn-link': function(e) {
-        if (Session.get('linked_id') === undefined) {
-            Session.set('linked_id', this._id);
-            $('#myModal').modal({keyboard: false});
+        if (this.completed) {
+            throwWarning('Task already completed!');
         } else {
-            Session.set('linked_id', undefined);
+            if (Session.get('linked_id') === undefined) {
+                Session.set('linked_id', this._id);
+                $('#myModal').modal({keyboard: false});
+            } else {
+                Session.set('linked_id', undefined);
+            }
         }
     }
 });
