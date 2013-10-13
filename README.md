@@ -43,7 +43,7 @@ TODO (Further)
 
 Want to try?
 ------------
-There is nothing much to see right now but if you insist to see the prograss you can try it [here](http://domat.meteor.com/).
+There is ~~nothing much to see right now~~  plenty of functionality implemented ~~but~~ and if you ~~insist~~ want to see the prograss you can try it [here](http://domat.meteor.com/).
 
 Or to try locally:
 
