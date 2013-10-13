@@ -22,10 +22,11 @@ Status
 * Notification system improved with auto-dismiss.
 * Implemented a pomodoro timer with full cycles of pomodoro.
 * Implemented the link between pomodoro timer and task. Pomodoro now updates linked task's completed pomodoro count properly.
+* Pomodoro timer configuration persisted in the database.
 
 TODO
 ----
-* Countdown timer start values must be configurable for each user or group.
+* ~~Countdown timer start values must be configurable for each user or group.~~
 * ~~Timer must be more pomodoro like. Work cycle, rest cycle, long rest etc.~~
 * ~~A relation must exist between tasks and timer instances. To count completed
   pomodoros for a task.~~
