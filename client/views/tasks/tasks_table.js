@@ -83,6 +83,7 @@ Template.taskItem.events({
         } else {
             if (Session.get('linked_id') === undefined) {
                 Session.set('linked_id', this._id);
+                initPomodoro();
                 $('#myModal').modal({keyboard: false});
             } else {
                 Session.set('linked_id', undefined);
