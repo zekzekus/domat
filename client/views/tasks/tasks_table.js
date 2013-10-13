@@ -65,11 +65,7 @@ Template.taskItem.events({
         Tasks.update(this._id, {$set: {completed: !this.completed}});
     },
     'click #btn-delete': function(e) {
-        if (this.completed) {
-            throwWarning('Task is active!');
-        } else {
-            Tasks.remove(this._id);
-        }
+        Tasks.remove(this._id);
     },
     'dblclick .task-description': function(e, t) {
         if (this.completed) {
