@@ -21,13 +21,14 @@ Status
 * Security improved with server side Meteor.Methods.
 * Notification system improved with auto-dismiss.
 * Implemented a pomodoro timer with full cycles of pomodoro.
+* Implemented the link between pomodoro timer and task. Pomodoro now updates linked task's completed pomodoro count properly.
 
 TODO
 ----
 * Countdown timer start values must be configurable for each user or group.
 * ~~Timer must be more pomodoro like. Work cycle, rest cycle, long rest etc.~~
-* A relation must exist between tasks and timer instances. To count completed
-  pomodoros for a task.
+* ~~A relation must exist between tasks and timer instances. To count completed
+  pomodoros for a task.~~
 * A group mechanism may be applied. Think about to apply pomodoro technique for
   groups.
 * For individuals and groups think about visualisation of pomodoros started,
