@@ -1,7 +1,16 @@
 Router.configure({
     layout: 'layout',
     notFoundTemplate: 'notFound',
-    loadingTemplate: 'loading'
+    loadingTemplate: 'loading',
+    before: function() {
+        var user = Meteor.user();
+        if (!user) {
+            this.render(Meteor.loggingIn() ? 'loading' : 'login');
+            this.render('header_login', {to: 'header'});
+            this.render('footer', {to: 'footer'});
+            return this.stop();
+        }
+    }
 });
 
 Router.map(function() {
