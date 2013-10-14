@@ -10,6 +10,9 @@ Router.configure({
             this.render('footer', {to: 'footer'});
             return this.stop();
         }
+    },
+    after: function() {
+        clearNotifications();
     }
 });
 
@@ -20,9 +23,6 @@ Router.map(function() {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
-        },
-        onAfterRun: function() {
-            clearNotifications();
         }
     });
     this.route('reports', {
@@ -30,17 +30,11 @@ Router.map(function() {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
-        },
-        onAfterRun: function() {
-            clearNotifications();
         }
     });
     this.route('login', {
         renderTemplates: {
             'header_login': {to: 'header'}
-        },
-        onAfterRun: function() {
-            clearNotifications();
         }
     });
     this.route('profile', {
@@ -48,9 +42,6 @@ Router.map(function() {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
-        },
-        onAfterRun: function() {
-            clearNotifications();
         }
     });
     this.route('timer', {
@@ -58,9 +49,6 @@ Router.map(function() {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
-        },
-        onAfterRun: function() {
-            clearNotifications();
         }
     });
 });
