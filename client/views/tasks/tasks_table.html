@@ -55,7 +55,11 @@
         </td>
         <td>
             <a href="javascript:;" id="btn-link" class="btn {{#if linked}}btn-success{{else}}btn-primary{{/if}} btn-small">
-                <i class="btn-icon-only {{#if linked}}icon-pause{{else}}icon-play{{/if}}"> </i>
+                <i class="btn-icon-only
+                   {{#if linked}}icon-pause{{else}}icon-play{{/if}}"
+                   data-toggle="tooltip"
+                   data-placement="right"
+                   data-original-title="{{#if linked}}Unlink from timer{{else}}Link to timer{{/if}}"> </i>
             </a>
         </td>
     </tr>
