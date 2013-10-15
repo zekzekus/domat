@@ -16,6 +16,11 @@ body {
 p { 
 	font: 13px/1.7em 'Open Sans'; 	
 }
+
+h1 {
+    font-size: 30px;
+    line-height: 36px;
+}
     
 input,
 button,

@@ -10,7 +10,7 @@
         </div>
         <!-- /widget-header -->
         <div class="widget-content">
-            <table class="table table-striped table-bordered">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Description</th>
@@ -31,14 +31,14 @@
 </template>
 
 <template name="taskItem">
-    <tr>
+    <tr class="{{#if completed}}success{{else}}{{#if linked}}info{{/if}}{{/if}}">
         <td style="{{#if completed}}color: red; text-decoration: line-through;{{/if}}">
             {{#if editing}}
                 <input id="task-input" type="text" value="{{description}}" class="txt-edit-task">
             {{else}}
                 <span class="task-description"
                       data-toggle="tooltip"
-                      data-placement="left"
+                      data-placement="right"
                       data-original-title="{{#if completed}}Done!{{else}}Double click to edit{{/if}}">
                     {{description}}
                 </span>
@@ -54,12 +54,9 @@
             </a>
         </td>
         <td>
-            <a href="javascript:;" id="btn-link" class="btn {{#if linked}}btn-success{{else}}btn-primary{{/if}} btn-small">
+            <a href="javascript:;" id="btn-link" class="btn {{#if linked}}btn-primary{{else}}btn-success{{/if}} btn-small">
                 <i class="btn-icon-only
-                   {{#if linked}}icon-pause{{else}}icon-play{{/if}}"
-                   data-toggle="tooltip"
-                   data-placement="right"
-                   data-original-title="{{#if linked}}Unlink from timer{{else}}Link to timer{{/if}}"> </i>
+                   {{#if linked}}icon-pause{{else}}icon-play{{/if}}"> </i>
             </a>
         </td>
     </tr>
