@@ -12,18 +12,7 @@ In some regions of [Türkiye](http://en.wikipedia.org/wiki/T%C3%BCrkiye), the wo
 
 Status
 ------
-* A simple task/todo manager fully implemented (add, edit, delete, toggle
-  complete)
-* A simple and task independant countdown timer implemented as a proof of
-  concept
-* Timer developed a little bit with visual enchancements. Bigger, nicer, eye
-  catching etc.
-* Security improved with server side Meteor.Methods.
-* Notification system improved with auto-dismiss.
-* Implemented a pomodoro timer with full cycles of pomodoro.
-* Implemented the link between pomodoro timer and task. Pomodoro now updates linked task's completed pomodoro count properly.
-* Pomodoro timer configuration persisted in the database.
-
+I added CHANGELOG file. [Here](https://github.com/zekzekus/domat/blob/master/CHANGELOG.md).
 TODO
 ----
 I moved todo items to github issues. [Here](https://github.com/zekzekus/domat/issues?state=open).
