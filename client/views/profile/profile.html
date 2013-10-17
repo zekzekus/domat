@@ -1,30 +1,63 @@
 <template name="profile">
-<h1>Profile Settings</h1>
-<br>
-<p>For development purposes the durations are in seconds. For example if you want 25 minutes, you should give 1500.</p>
-<form class="form-horizontal">
-    <div class="control-group">
-        <label class="control-label" for="workDuration">Work Duration</label>
-        <div class="controls">
-            <input type="text" id="workDuration" value="{{settings.workDuration}}" placeholder="">
+    <h1>Profile Settings</h1>
+    <br>
+    <div class="row row-fluid">
+        <div class="span6">
+            <form name="settingsTimer" class="form-horizontal">
+                <legend>Timer Settings</legend>
+                <div class="control-group">
+                    <label class="control-label" for="workDuration">Work Duration</label>
+                    <div class="controls">
+                        <input type="text" id="workDuration" value="{{settings.workDuration}}" placeholder="">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="shortDuration">Short Break Duration</label>
+                    <div class="controls">
+                        <input type="text" id="shortDuration" value="{{settings.shortBreakDuration}}" placeholder="">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="longDuration">Long Break Duration</label>
+                    <div class="controls">
+                        <input type="text" id="longDuration" value="{{settings.longBreakDuration}}" placeholder="">
+                    </div>
+                </div>
+                <p>Note: Durations in seconds</p>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="span6">
+            <form name="settingsJira" class="form-horizontal">
+                <legend>JIRA Settings</legend>
+                <div class="control-group">
+                    <label class="control-label" for="jiraHost">Host</label>
+                    <div class="controls">
+                        <input type="text" id="jiraHost" value="{{settings.jiraHost}}" placeholder="">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="jiraUsername">Username</label>
+                    <div class="controls">
+                        <input type="text" id="jiraUsername" value="{{settings.jiraUsername}}" placeholder="">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="jiraPassword">Password</label>
+                    <div class="controls">
+                        <input type="password" id="jiraPassword" value="{{settings.jiraPassword}}" placeholder="">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn">Save</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="shortDuration">Short Break Duration</label>
-        <div class="controls">
-            <input type="text" id="shortDuration" value="{{settings.shortBreakDuration}}" placeholder="">
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="longDuration">Long Break Duration</label>
-        <div class="controls">
-            <input type="text" id="longDuration" value="{{settings.longBreakDuration}}" placeholder="">
-        </div>
-    </div>
-    <div class="control-group">
-        <div class="controls">
-            <button type="submit" class="btn">Save</button>
-        </div>
-    </div>
-</form>
 </template>

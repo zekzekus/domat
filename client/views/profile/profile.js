@@ -1,5 +1,5 @@
 Template.profile.events({
-    'submit form': function(e) {
+    'submit form[name=settingsTimer]': function(e) {
         e.preventDefault();
         var work = $('#workDuration').val();
         var shortB = $('#shortDuration').val();
@@ -29,10 +29,45 @@ Template.profile.events({
             });
         }
 
-        throwSuccess('Settings saved!');
-        
+        throwSuccess('Timer Settings saved!');
+
+        return true;
+    },
+    'submit form[name=settingsJira]': function(e) {
+        e.preventDefault();
+        var host = $('#jiraHost').val();
+        var username = $('#jiraUsername').val();
+        var password = $('#jiraPassword').val();
+
+        var user = Meteor.user();
+
+        if (!user) {
+            throwError('You must login!');
+            return false;
+        }
+
+        var settings = Settings.findOne({user_id: user._id});
+
+        if (settings) {
+            Settings.update(settings._id, {$set: {
+                jiraHost: host,
+                jiraUsername: username,
+                jiraPassword: password
+            }});
+        } else {
+            Settings.insert({
+                user_id: user._id,
+                jiraHost: host,
+                jiraUsername: username,
+                jiraPassword: password
+            });
+        }
+
+        throwSuccess('JIRA Settings saved!');
+
         return true;
     }
+
 });
 
 Template.profile.helpers({

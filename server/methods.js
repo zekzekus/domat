@@ -21,5 +21,25 @@ Meteor.methods({
         var taskId = Tasks.insert(task);
 
         return taskId;
+    },
+    testHTTP: function() {
+        var fut = new Future();
+
+        var JiraApi = Meteor.require('jira').JiraApi;
+        var settings = Settings.findOne({user_id: Meteor.user()._id});
+
+        if (_.isUndefined(settings) || _.isNull(settings)) {
+            throw new Meteor.Error(404, "JIRA settings not found!");
+        }
+
+        var jira = new JiraApi('http',
+                               settings.jiraHost, 80,
+                               settings.jiraUsername, settings.jiraPassword,
+                               '2');
+        jira.listProjects(function(error, result) {
+            fut['return'](result);
+        });
+
+        return fut.wait();
     }
 });
