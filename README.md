@@ -26,20 +26,7 @@ Status
 
 TODO
 ----
-* ~~Countdown timer start values must be configurable for each user or group.~~
-* ~~Timer must be more pomodoro like. Work cycle, rest cycle, long rest etc.~~
-* ~~A relation must exist between tasks and timer instances. To count completed
-  pomodoros for a task.~~
-* A group mechanism may be applied. Think about to apply pomodoro technique for
-  groups.
-* For individuals and groups think about visualisation of pomodoros started,
-  going on, finished.
-* Reporting tools of pomodoro system. Task inventory, daily list etc.
-
-TODO (Further)
---------------
-* Implement a plugin system to provide integration between popular task/issue
-  management systems like redmine, bugzilla, jira etc.
+I moved todo items to github issues. [Here](https://github.com/zekzekus/domat/issues?state=open).
 
 Want to try?
 ------------
