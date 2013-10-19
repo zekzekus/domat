@@ -13,6 +13,11 @@
                             <i class="icon-list-alt"></i><span>Reports</span>
                         </a>
                     </li>
+                    <li {{#if ifCurrentPath '/profile'}}class="active"{{/if}}>
+                        <a href="{{pathFor 'profile'}}">
+                            <i class="icon-wrench"></i><span>Profile</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- /container -->
