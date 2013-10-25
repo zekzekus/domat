@@ -14,7 +14,8 @@
                 <thead>
                     <tr>
                         <th>Description</th>
-                        <th>Completed Pomodoros</th>
+                        <th>Completed</th>
+                        <th>Current</th>
                         <th class="td-actions">Done / Delete</th>
                         <th class="td-actions">Work</th>
                     </tr>
@@ -40,11 +41,12 @@
                       data-toggle="tooltip"
                       data-placement="right"
                       data-original-title="{{#if completed}}Done!{{else}}Double click to edit{{/if}}">
-                    {{description}}
+                      {{description}}
                 </span>
             {{/if}}
         </td>
         <td>{{completed_pomodoros}}</td>
+        <td>{{time}} - {{state}}</td>
         <td class="td-actions">
             <a href="javascript:;" id="btn-complete" class="btn btn-small {{#if completed}}btn-success{{/if}}">
                 <i class="btn-icon-only {{#if completed}}icon-remove{{else}}icon-ok{{/if}}"> </i>

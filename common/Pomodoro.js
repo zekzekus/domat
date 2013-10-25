@@ -13,7 +13,15 @@ Pomodoro = function(options) {
     this.onShortBreakFinish = this.options.onShortBreakFinish || function() {};
     this.onLongBreakStart = this.options.onLongBreakStart || function() {};
     this.onLongBreakFinish = this.options.onLongBreakFinish || function() {};
-    this.__setDefaults();
+    this.intervalHandle = undefined;
+
+    this.pomocount = this.options.pomocount || 0;
+    this.state = this.options.state || undefined;
+    this.setTime(this.options.time || this.workDuration);
+
+    if (this.state === undefined) {
+        this.updateState();
+    }
 };
 
 Pomodoro.prototype.__setDefaults = function() {
@@ -87,13 +95,13 @@ Pomodoro.prototype.__callStartCallbacks = function() {
     switch (this.state) {
         case 'work':
             this.onWorkStart();
-            break;
+        break;
         case 'short break':
             this.onShortBreakStart();
-            break;
+        break;
         case 'long break':
             this.onLongBreakStart();
-            break;
+        break;
         default: break;
     }
 };
@@ -102,13 +110,13 @@ Pomodoro.prototype.__callFinishCallbacks = function() {
     switch (this.state) {
         case 'work':
             this.onWorkFinish();
-            break;
+        break;
         case 'short break':
             this.onShortBreakFinish();
-            break;
+        break;
         case 'long break':
             this.onLongBreakFinish();
-            break;
+        break;
         default: break;
     }
 };
@@ -156,7 +164,8 @@ Pomodoro.prototype.__clearInterval = function() {
 
 pomodoro = undefined;
 
-initPomodoro = function() {
+initPomodoro = function(initTask) {
+    var task = initTask || {};
     var settings = Settings.findOne({user_id: Meteor.user()._id});
 
     if (!settings) {
@@ -167,26 +176,31 @@ initPomodoro = function() {
         };
     }
 
-    if (pomodoro === undefined) {
-        pomodoro = new Pomodoro({
-            workDuration: settings.workDuration,
-            shortBreakDuration: settings.shortBreakDuration,
-            longBreakDuration: settings.longBreakDuration,
-            onCountdown: function() {
-                Session.set('timer', this.getPrettyTime());
-                Session.set('percent', this.getPercent());
-                Session.set('state', this.getPrettyState());
-                document.title = this.getPrettyTime();
-            },
-            onWorkFinish: function() {
-                var linked_id = Session.get('linked_id');
-                if (linked_id !== undefined) {
-                    var linked_task = Tasks.findOne({_id: linked_id});
-                    Tasks.update(linked_id, {$set: {
-                        completed_pomodoros: linked_task.completed_pomodoros + 1
-                    }});
-                }
-            }
-        });
+    if (pomodoro !== undefined) {
+        delete pomodoro;
     }
+    pomodoro = new Pomodoro({
+        pomocount: task.pomocount,
+        time: task.time,
+        state: task.state,
+        workDuration: settings.workDuration,
+        shortBreakDuration: settings.shortBreakDuration,
+        longBreakDuration: settings.longBreakDuration,
+        onCountdown: function() {
+            Session.set('timer', this.getPrettyTime());
+            Session.set('percent', this.getPercent());
+            Session.set('state', this.getPrettyState());
+            document.title = this.getPrettyTime();
+            Tasks.update(task._id, {$set: {
+                time: this.getTime(),
+                state: this.state,
+                pomocount: this.pomocount
+            }});
+        },
+        onWorkFinish: function() {
+            Tasks.update(task._id, {$set: {
+                completed_pomodoros: task.completed_pomodoros + 1
+            }});
+        }
+    });
 };
