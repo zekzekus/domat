@@ -190,7 +190,7 @@ initPomodoro = function(initTask) {
             Session.set('timer', this.getPrettyTime());
             Session.set('percent', this.getPercent());
             Session.set('state', this.getPrettyState());
-            document.title = this.getPrettyTime();
+            document.title = this.getPrettyTime() + '-' + this.getPrettyState();
             Tasks.update(task._id, {$set: {
                 time: this.getTime(),
                 state: this.state,
