@@ -140,6 +140,7 @@ Pomodoro.prototype.updateState = function() {
             this.state = 'short break';
             this.setTime(this.shortBreakDuration);
         }
+        this.start();
     } else {
         this.state = 'work';
         this.pomocount += 1;
