@@ -35,6 +35,11 @@ Template.timer.events({
     'click #btn-reload': function(e) {
         pomodoro = undefined;
         initPomodoro();
+    },
+    'click #btn-skip': function(e) {
+        if (pomodoro !== undefined) {
+            pomodoro.skip();
+        }
     }
 });
 

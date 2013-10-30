@@ -149,6 +149,10 @@ Pomodoro.prototype.updateState = function() {
     return;
 };
 
+Pomodoro.prototype.skip = function() {
+    this.updateState();
+};
+
 Pomodoro.prototype.reset = function() {
     this.__clearInterval();
     this.__setDefaults();
