@@ -112,15 +112,5 @@ Template.taskItem.helpers({
     },
     linked: function() {
         return Session.equals('linked_id', this._id);
-    },
-    prettyTime: function() {
-        if (pomodoro !== undefined) {
-            return pomodoro.getPrettyTime();
-        }
-    },
-    prettyState: function() {
-        if (pomodoro !== undefined) {
-            return pomodoro.getPrettyState();
-        }
     }
 });

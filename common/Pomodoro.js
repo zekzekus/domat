@@ -199,7 +199,9 @@ initPomodoro = function(initTask) {
             Tasks.update(task._id, {$set: {
                 time: this.getTime(),
                 state: this.state,
-                pomocount: this.pomocount
+                pomocount: this.pomocount,
+                prettyTime: this.getPrettyTime(),
+                prettyState: this.getPrettyState()
             }});
         },
         onWorkFinish: function() {
