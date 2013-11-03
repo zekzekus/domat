@@ -25,7 +25,8 @@ JiraClient.prototype.search = function(searchString) {
 
     var result = HTTP.call("post", uri, {
         auth: this.username + ":" + this.password,
-        data: data
+        data: data,
+        followRedirects: true
     });
 
     return result.data;

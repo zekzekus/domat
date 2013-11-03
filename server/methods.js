@@ -23,6 +23,7 @@ Meteor.methods({
         return taskId;
     },
     getUsersIssues: function() {
+        this.unblock();
         var user = Meteor.user();
         if (!user) {
             throw new Meteor.Error(401, "Not logged in!");
