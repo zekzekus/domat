@@ -22,24 +22,22 @@ Meteor.methods({
 
         return taskId;
     },
-    testHTTP: function() {
-        var fut = new Future();
-
-        var JiraApi = Meteor.require('jira').JiraApi;
-        var settings = Settings.findOne({user_id: Meteor.user()._id});
-
-        if (_.isUndefined(settings) || _.isNull(settings)) {
-            throw new Meteor.Error(404, "JIRA settings not found!");
+    getUsersIssues: function() {
+        var user = Meteor.user();
+        if (!user) {
+            throw new Meteor.Error(401, "Not logged in!");
         }
 
-        var jira = new JiraApi('http',
-                               settings.jiraHost, 80,
-                               settings.jiraUsername, settings.jiraPassword,
-                               '2');
-        jira.listProjects(function(error, result) {
-            fut['return'](result);
+        var settings = Settings.findOne({user_id: user._id});
+
+        var client = new JiraClient({
+            host: settings.jiraHost,
+            username: settings.jiraUsername,
+            password: settings.jiraPassword
         });
 
-        return fut.wait();
+        var jql = "assignee=" + settings.jiraUsername.replace(".", "\\u002e");
+        jql += ' AND status in (Open, "In Progress", Reopened, New)';
+        return client.search(jql);
     }
 });

@@ -25,4 +25,4 @@ throwSuccess = function(message) {
 
 clearNotifications = function() {
     Notifications.remove({seen: true});
-}
+};

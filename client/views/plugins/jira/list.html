@@ -1,0 +1,45 @@
+<template name="issues">
+    <!-- Modal -->
+    <div id="modal-list" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3>Select issue:</h3>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+            <div class="widget widget-table action-table">
+                <div class="widget-header"> <i class="icon-th-list"></i>
+                    <h3>{{#isolate}}JIRA Issues {{#if jira_loading}}{{> spinner}}{{/if}}{{/isolate}}</h3>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th class="td-actions">Done / Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each issues}}
+                                {{> issue}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /widget-content -->
+            </div><h3></h3>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+    </div>
+</template>
+
+<template name="issue">
+    <tr>
+        <td>{{fields.summary}}</th>
+        <td class="td-actions">
+            <button class="btn btn-info">Select</button>
+        </td>
+    </tr>
+</template>

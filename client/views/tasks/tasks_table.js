@@ -1,3 +1,5 @@
+JiraIssues = new Meteor.Collection(null);
+
 if (Meteor.isClient) {
     Meteor.startup(function() {
         Session.set('linked_id', undefined);
@@ -58,6 +60,19 @@ Template.tasksTable.events({
                 }
             });
         }
+    },
+    'click #btn-from-jira': function(e) {
+        Session.set('jira_loading', true);
+        Meteor.call('getUsersIssues', function(error, result) {
+            console.log(error);
+            console.log(result);
+            Session.set('jira_loading', false);
+            JiraIssues.remove({});
+            _.each(result.issues, function(issue) {
+                JiraIssues.insert(issue);
+            });
+        });
+        $('#modal-list').modal({keyboard: false});
     }
 });
 
