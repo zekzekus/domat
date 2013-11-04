@@ -56,7 +56,7 @@
                 <div class="control-group">
                     <label class="control-label" for="jiraAuthHeader">Auth Header</label>
                     <div class="controls">
-                        <input type="password" id="jiraAuthHeader" value="{{settings.jiraAuthHeader}}" placeholder="">
+                        <p>Authorization header: {{#if settings.jiraAuthHeader}}EXISTS{{else}}DOES NOT EXISTS{{/if}}</p>
                     </div>
                 </div>
                 <div class="control-group">
