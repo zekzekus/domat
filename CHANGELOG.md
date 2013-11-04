@@ -1,7 +1,9 @@
+* Simple JIRA integration implemented. Tasks can be created from JIRA issues.
 
 * Pomodoro timer configuration persisted in the database.
 
-* Implemented the link between pomodoro timer and task. Pomodoro now updates linked task's completed pomodoro count properly.
+* Implemented the link between pomodoro timer and task. Pomodoro now updates
+  linked task's completed pomodoro count properly.
 
 * Implemented a pomodoro timer with full cycles of pomodoro.
 

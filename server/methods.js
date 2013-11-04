@@ -10,7 +10,7 @@ Meteor.methods({
             throw new Meteor.Error(422, "Enter a description for the task!");
         }
 
-        var task = _.extend(_.pick(taskAttributes, 'description'), {
+        var task = _.extend(_.pick(taskAttributes, 'description', 'jira_key', 'jira_id'), {
             assignee: user.services.google.email,
             timestamp: new Date().getTime(),
             completed_pomodoros: 0,

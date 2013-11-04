@@ -64,15 +64,18 @@ Template.tasksTable.events({
     'click #btn-from-jira': function(e) {
         Session.set('jira_loading', true);
         Meteor.call('getUsersIssues', function(error, result) {
-            console.log(error);
-            console.log(result);
+            if (error) {
+                throwError(error.reason);
+            }
+
             Session.set('jira_loading', false);
             JiraIssues.remove({});
             _.each(result.issues, function(issue) {
+                _.extend(issue, {added: false});
                 JiraIssues.insert(issue);
             });
         });
-        $('#modal-list').modal({keyboard: false});
+        $('#modal-list').modal({keyboard: true});
     }
 });
 
