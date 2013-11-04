@@ -34,11 +34,34 @@ Meteor.methods({
         var client = new JiraClient({
             host: settings.jiraHost,
             username: settings.jiraUsername,
-            password: settings.jiraPassword
+            authHeader: settings.jiraAuthHeader
         });
 
         var jql = "assignee=" + settings.jiraUsername.replace(".", "\\u002e");
         jql += ' AND status in (Open, "In Progress", Reopened, New)';
         return client.search(jql);
+    },
+    updateJiraSettings: function(host, username, password) {
+        var user = Meteor.user();
+        var settings = Settings.findOne({user_id: user._id});
+
+        var authHeader = new Buffer(username + ":" + password).
+            toString('base64');
+
+        if (settings) {
+            Settings.update(settings._id, {$set: {
+                jiraHost: host,
+                jiraUsername: username,
+                jiraAuthHeader: authHeader
+            }});
+        } else {
+            Settings.insert({
+                user_id: user._id,
+                jiraHost: host,
+                jiraUsername: username,
+                jiraAuthHeader: authHeader
+            });
+        }
+        return true;
     }
 });

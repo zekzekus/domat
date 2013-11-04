@@ -50,6 +50,13 @@
                     <label class="control-label" for="jiraPassword">Password</label>
                     <div class="controls">
                         <input type="password" id="jiraPassword" value="{{settings.jiraPassword}}" placeholder="">
+                        <p>Username and password helps to generate auth header for JIRA access. Password not saved to anywhere.</p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="jiraAuthHeader">Auth Header</label>
+                    <div class="controls">
+                        <input type="password" id="jiraAuthHeader" value="{{settings.jiraAuthHeader}}" placeholder="">
                     </div>
                 </div>
                 <div class="control-group">

@@ -1,3 +1,6 @@
+* JIRA access converted to encoded authorization token passing. A little more
+  secure before switching to Oauth authorization.
+
 * Simple JIRA integration implemented. Tasks can be created from JIRA issues.
 
 * Pomodoro timer configuration persisted in the database.

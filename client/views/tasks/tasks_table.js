@@ -67,7 +67,6 @@ Template.tasksTable.events({
             if (error) {
                 throwError(error.reason);
             }
-
             Session.set('jira_loading', false);
             JiraIssues.remove({});
             _.each(result.issues, function(issue) {

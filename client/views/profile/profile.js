@@ -46,24 +46,15 @@ Template.profile.events({
             return false;
         }
 
-        var settings = Settings.findOne({user_id: user._id});
+        Meteor.call('updateJiraSettings', host, username, password, function(error, result) {
+            if (error) {
+                throwError(error.reason);
+            }
 
-        if (settings) {
-            Settings.update(settings._id, {$set: {
-                jiraHost: host,
-                jiraUsername: username,
-                jiraPassword: password
-            }});
-        } else {
-            Settings.insert({
-                user_id: user._id,
-                jiraHost: host,
-                jiraUsername: username,
-                jiraPassword: password
-            });
-        }
-
-        throwSuccess('JIRA Settings saved!');
+            if (result === true) {
+                throwSuccess('JIRA Settings saved!');
+            }
+        });
 
         return true;
     }

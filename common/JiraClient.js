@@ -7,6 +7,7 @@ JiraClient = function(options) {
     this.version = options.version || "2";
     this.username = options.username;
     this.password = options.password;
+    this.authHeader = options.authHeader;
 };
 
 JiraClient.prototype.__makeUrl = function(endpoint) {
@@ -26,7 +27,10 @@ JiraClient.prototype.search = function(searchString) {
     var result = HTTP.call("post", uri, {
         auth: this.username + ":" + this.password,
         data: data,
-        followRedirects: true
+        followRedirects: true,
+        headers: {
+            "Authorization": "Basic " + this.authHeader
+        }
     });
 
     return result.data;
