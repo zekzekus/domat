@@ -11,7 +11,7 @@ Template.issue.events({
     'click .issue-select': function(e) {
         var task = {
             _id: this._id,
-            description: this.fields.summary,
+            description: this.key + ": " + this.fields.summary,
             jira_key: this.key,
             jira_id: this.id
         };
