@@ -1,5 +1,5 @@
 Router.configure({
-    layout: 'layout',
+    layoutTemplate: 'layout',
     notFoundTemplate: 'notFound',
     loadingTemplate: 'loading',
     before: function() {
@@ -19,33 +19,33 @@ Router.configure({
 Router.map(function() {
     this.route('dashboard', {
         path: '/',
-        renderTemplates: {
+        yieldTemplates: {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
         }
     });
     this.route('reports', {
-        renderTemplates: {
+        yieldTemplates: {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
         }
     });
     this.route('login', {
-        renderTemplates: {
+        yieldTemplates: {
             'header_login': {to: 'header'}
         }
     });
     this.route('profile', {
-        renderTemplates: {
+        yieldTemplates: {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
         }
     });
     this.route('timer', {
-        renderTemplates: {
+        yieldTemplates: {
             'header': {to: 'header'},
             'navmenu': {to: 'navmenu'},
             'footer': {to: 'footer'}
