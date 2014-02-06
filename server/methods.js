@@ -38,7 +38,7 @@ Meteor.methods({
         });
 
         var jql = "assignee=" + settings.jiraUsername.replace(".", "\\u002e");
-        jql += ' AND status in (Open, "In Progress", Reopened, New)';
+        jql += ' AND status in (Open, "IN PROGRESS BY DEVELOPER", Reopened, New, NEW)';
         return client.search(jql);
     },
     updateJiraSettings: function(host, username, password) {
